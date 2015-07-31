@@ -121,7 +121,7 @@ class Default_Model_User {
         $this->points = 100;
 
         $query = "SELECT COUNT(`points`) AS `total` FROM `notary` " .
-            "WHERE `from` = :user AND `method` == 'Face to Face Meeting' AND `from` != `to`";
+            "WHERE `from` = :user AND `method` = 'Face to Face Meeting' AND `from` != `to`";
         $query_params['user'] = $this->id;
         $row = $this->db->query($query, $query_params)->fetch();
         if ($row['total'] === null) $row['total'] = 0;
