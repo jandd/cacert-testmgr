@@ -162,12 +162,16 @@ class Default_Model_User {
             '`expire` < now()) >= 100';
         $query_params['user'] = $this->id;
         $this->db->query($query, $query_params);
+
+        $this->refreshPoints();
     }
 
     /**
      * @return boolean
      */
     public function getAssurerStatus() {
+        $this->refreshPoints();
+
         $query = 'SELECT 1 FROM `users` WHERE `users`.`id` = :user AND '.
             '`assurer_blocked` = 0 AND '.
 
