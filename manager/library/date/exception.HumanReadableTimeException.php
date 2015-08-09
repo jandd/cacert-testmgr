@@ -23,12 +23,12 @@ class HumanReadableTimeException extends BaseException {
     /**
      * make new object
      *
-	 * @access public
+     * @access public
      * @param string $message
      * @param int $code
      * @param string $extra
      */
-	/*
+    /*
     public function __construct($message,$code = 0,$extra = '') {
         parent::__construct($message,$code, $extra);
     }

@@ -8,30 +8,30 @@ $this->headLink()->appendStylesheet('/css/mail.css');
 <H1><?php print I18n::_('View all Mail'); ?></H1>
 <?php
 if (count($this->headers) == 0) {
-	print I18n::_('You currently have no mail.');
+    print I18n::_('You currently have no mail.');
 }
 else {
 ?>
 <table>
-	<tr>
-		<th class="col1"><?php print I18n::_('From');?></th>
-		<th class="col2"><?php print I18n::_('To');?></th>
-		<th class="col3"><?php print I18n::_('Subject');?></th>
-		<th class="col4"><?php print I18n::_('Date');?></th>
-		<th class="col5"><?php print I18n::_('Size');?></th>
-		<th class="col6"><?php print I18n::_('Del');?></th>
-	</tr>
+    <tr>
+        <th class="col1"><?php print I18n::_('From');?></th>
+        <th class="col2"><?php print I18n::_('To');?></th>
+        <th class="col3"><?php print I18n::_('Subject');?></th>
+        <th class="col4"><?php print I18n::_('Date');?></th>
+        <th class="col5"><?php print I18n::_('Size');?></th>
+        <th class="col6"><?php print I18n::_('Del');?></th>
+    </tr>
 <?php
-	foreach ($this->headers as $header) {
-		print "        <tr>\n";
-		print "            <td><a href=\"" . $header->detailslink . "\">" . $header->fromaddress . "</a></td>";
-		print "            <td>" . $header->toaddress . "</td>";
-		print "            <td>" . $header->subject . "</td>";
-		print "            <td>" . $header->date . "</td>";
-		print "            <td>" . $header->Size . "</td>";
-		print "            <td><a class=\"delete\" href=\"" . $header->deletelink . "\"><img src=\"/img/delete_icon.jpg\"></a></td>";
-		print "        </tr>\n";
-	}
+    foreach ($this->headers as $header) {
+        print "        <tr>\n";
+        print "            <td><a href=\"" . $header->detailslink . "\">" . $header->fromaddress . "</a></td>";
+        print "            <td>" . $header->toaddress . "</td>";
+        print "            <td>" . $header->subject . "</td>";
+        print "            <td>" . $header->date . "</td>";
+        print "            <td>" . $header->Size . "</td>";
+        print "            <td><a class=\"delete\" href=\"" . $header->deletelink . "\"><img src=\"/img/delete_icon.jpg\"></a></td>";
+        print "        </tr>\n";
+    }
 }
 ?>
 </table>

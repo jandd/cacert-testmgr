@@ -36,7 +36,7 @@ require_once 'Zend/Config.php';
  */
 class Config_Db extends Zend_Config
 {
-	/**
+    /**
      * String that separates nesting levels of configuration data identifiers
      *
      * @var string
@@ -94,7 +94,7 @@ class Config_Db extends Zend_Config
      *      );
      *
      * @param  Zend_Db       $dbc
-     * @param  string	     $db_table
+     * @param  string         $db_table
      * @param  string|null   $section
      * @param  boolean|array $options
      * @throws Zend_Config_Exception
@@ -134,7 +134,7 @@ class Config_Db extends Zend_Config
         }
 
         $iniArray = $this->_loadIniFile($dbc, $db_table, $section);
-		$section = null;
+        $section = null;
 
         if (null === $section) {
             // Load entire file
@@ -233,28 +233,28 @@ class Config_Db extends Zend_Config
      * @return array
      */
     protected function _parse_ini_db($dbc, $db_table, $section) {
-    	$sql = 'select * from ' . $db_table;
-		if ($section !== null) {
-			$sql .= ' where ' . $section;
-		}
+        $sql = 'select * from ' . $db_table;
+        if ($section !== null) {
+            $sql .= ' where ' . $section;
+        }
 
-    	$db_config = $dbc->query($sql);
+        $db_config = $dbc->query($sql);
 
-    	$config = array();
+        $config = array();
 
-    	while (($row = $db_config->fetch()) !== false) {
-    		$key = explode('.', $row['config_key']);
-    		$depth = count($key);
-    		$ci = &$config;
-    		for ($cnt = 0; $cnt < $depth; $cnt++) {
-    			if ($cnt == ($depth - 1))
-    				$ci[$key[$cnt]] = $row['config_value'];
-    			elseif (!isset($ci[$key[$cnt]]))
-    				$ci[$key[$cnt]] = array();
-    			$ci = &$ci[$key[$cnt]];
-    		}
-    	}
-    	return $config;
+        while (($row = $db_config->fetch()) !== false) {
+            $key = explode('.', $row['config_key']);
+            $depth = count($key);
+            $ci = &$config;
+            for ($cnt = 0; $cnt < $depth; $cnt++) {
+                if ($cnt == ($depth - 1))
+                    $ci[$key[$cnt]] = $row['config_value'];
+                elseif (!isset($ci[$key[$cnt]]))
+                    $ci[$key[$cnt]] = array();
+                $ci = &$ci[$key[$cnt]];
+            }
+        }
+        return $config;
     }
 
     /**

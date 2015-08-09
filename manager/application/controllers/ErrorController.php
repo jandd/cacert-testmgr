@@ -28,7 +28,7 @@ class ErrorController extends Zend_Controller_Action
         Log::Log()->emerg($errors->exception);
     }
 
-	public function permissiondeniedAction() {
+    public function permissiondeniedAction() {
 
-	}
+    }
 }

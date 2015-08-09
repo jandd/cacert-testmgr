@@ -54,13 +54,13 @@ class Zend_View_Helper_LeftNav extends Zend_View_Helper_Placeholder_Container_St
      */
     public function leftNav($link = null, $setType = Zend_View_Helper_Placeholder_Container_Abstract::APPEND, $setPos = 0)
     {
-    	$link = (string) $link;
+        $link = (string) $link;
         if ($link !== '') {
             if ($setType == Zend_View_Helper_Placeholder_Container_Abstract::SET) {
                 if ($setPos != 0)
-                	$this->items[$setPos] = $link;
+                    $this->items[$setPos] = $link;
                 else
-                	$this->items[] = $link;
+                    $this->items[] = $link;
             } elseif ($setType == Zend_View_Helper_Placeholder_Container_Abstract::PREPEND) {
                 $this->items = array_merge(array($link), $this->items);
             } else {
@@ -80,16 +80,16 @@ class Zend_View_Helper_LeftNav extends Zend_View_Helper_Placeholder_Container_St
      */
     public function toString($indent = null, $locale = null)
     {
-		$output = '';
-    	$indent = (null !== $indent)
+        $output = '';
+        $indent = (null !== $indent)
                 ? $this->getWhitespace($indent)
                 : $this->getIndent();
 
         $output .= $indent . "<ul>\n";
         foreach ($this->items as $item) {
                 $output .= $indent . "<li>" . $item . "</li>\n";
- 		}
-		$output .= $indent . "</ul>\n";
+         }
+        $output .= $indent . "</ul>\n";
 
         return $output;
     }

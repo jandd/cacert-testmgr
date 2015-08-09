@@ -24,28 +24,28 @@
 require_once('../library/global/defines.php');
 
 try {
-	/** Zend Autoloader */
-	require_once 'Zend/Loader/Autoloader.php';
-	Zend_Loader_Autoloader::getInstance();
+    /** Zend Autoloader */
+    require_once 'Zend/Loader/Autoloader.php';
+    Zend_Loader_Autoloader::getInstance();
 
-	// Create application, bootstrap, and run
-	$application = new Zend_Application(
-	    APPLICATION_ENV,
-	    APPLICATION_PATH . '/configs/application.ini'
-	);
+    // Create application, bootstrap, and run
+    $application = new Zend_Application(
+        APPLICATION_ENV,
+        APPLICATION_PATH . '/configs/application.ini'
+    );
 
-	/** override settings from application.ini, if necessary
-	$fc = Zend_Controller_Front::getInstance();
-	$fc->setControllerDirectory(realpath(APPLICATION_PATH . '/controllers'));
-	$fc->setParam('noViewRenderer', false);
-	$fc->throwExceptions(true);
-	$fc->setParam('noErrorHandler', false);
-	*/
+    /** override settings from application.ini, if necessary
+    $fc = Zend_Controller_Front::getInstance();
+    $fc->setControllerDirectory(realpath(APPLICATION_PATH . '/controllers'));
+    $fc->setParam('noViewRenderer', false);
+    $fc->throwExceptions(true);
+    $fc->setParam('noErrorHandler', false);
+    */
 
-	$application->bootstrap()
-	            ->run();
+    $application->bootstrap()
+                ->run();
 } catch (Exception $e) {
-	print "Exception: " . $e->getMessage() . "\n";
-	print $e->getTraceAsString() . "\n";
-	Log::Log()->emerg($e);
+    print "Exception: " . $e->getMessage() . "\n";
+    print $e->getTraceAsString() . "\n";
+    Log::Log()->emerg($e);
 }
