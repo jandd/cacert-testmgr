@@ -13,4 +13,3 @@ print 'Day: ' . HumanReadableTime::Seconds2HR($hrf, 'd') . "\n";
 print 'Hour: ' . HumanReadableTime::Seconds2HR($hrf, 'h') . "\n";
 print 'Minute: ' . HumanReadableTime::Seconds2HR($hrf, 'm') . "\n";
 print 'Second: ' . HumanReadableTime::Seconds2HR($hrf, 's') . "\n";
-

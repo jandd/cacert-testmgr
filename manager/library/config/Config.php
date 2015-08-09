@@ -101,4 +101,3 @@ class Config {
 		return $this->config;
 	}
 }
-?>
