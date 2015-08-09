@@ -133,7 +133,7 @@ class Default_Model_User {
      * Get points of the user
      *
      * @return int
-     * 		The amount of points the user has
+     *         The amount of points the user has
      */
     public function getPoints()
     {
@@ -238,8 +238,8 @@ class Default_Model_User {
      * @throws Exception
      *
      * @return int
-     * 		The amount of points that have been issued (might be less than
-     * 		$points)
+     *         The amount of points that have been issued (might be less than
+     *         $points)
      */
     public function assure(Default_Model_User $assuree, $points, $location, $date) {
         // Sanitize inputs
@@ -373,7 +373,7 @@ class Default_Model_User {
      * Get the challenge types that are available in the database
      *
      * @param $db Zend_Db_Adapter_Abstract
-     * 	The database connection to use
+     *     The database connection to use
      *
      * @return array(int => string)
      */
@@ -388,7 +388,7 @@ class Default_Model_User {
      * database
      *
      * @param $db Zend_Db_Adapter_Abstract
-     * 	The database connection to use
+     *     The database connection to use
      * @param $type int
      *  The type of challenge you want to get the variants of
      *
@@ -406,10 +406,10 @@ class Default_Model_User {
      * Assign the challenge to the user
      *
      * @param $type int
-     * 	The type of the challenge, has to be one of the keys returned by
+     *     The type of the challenge, has to be one of the keys returned by
      *  getAvailableChallengeTypes()
      * @param $variant int
-     * 	The variant of the challenge, has to be one of the keys returned by
+     *     The variant of the challenge, has to be one of the keys returned by
      *  getAvailableChallengeVariants()
      * @param $date Zend_Date
      *  The date the challenge was passed, defaults to current time
@@ -467,7 +467,7 @@ class Default_Model_User {
      * getFlags() first
      *
      * @param $flags array (string => boolean)
-     * 	Currently unknown flags are silently ignored
+     *     Currently unknown flags are silently ignored
      */
     public function setFlags(array $flags) {
         $newflags = array();

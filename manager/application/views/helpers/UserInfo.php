@@ -52,10 +52,10 @@ class Zend_View_Helper_UserInfo extends Zend_View_Helper_Placeholder_Container_S
      */
     public function UserInfo($ar = null, $setType = Zend_View_Helper_Placeholder_Container_Abstract::APPEND, $setPos = 0)
     {
-    	if ($ar !== null && is_array($ar)) {
-    		$this->items = $ar;
-    	}
-    	return $this;
+        if ($ar !== null && is_array($ar)) {
+            $this->items = $ar;
+        }
+        return $this;
     }
 
     /**
@@ -67,28 +67,28 @@ class Zend_View_Helper_UserInfo extends Zend_View_Helper_Placeholder_Container_S
      */
     public function toString($indent = null, $locale = null)
     {
-    	$session = Zend_Registry::get('session');
-		$this->items = $session->authdata;
+        $session = Zend_Registry::get('session');
+        $this->items = $session->authdata;
 
-    	$output = '';
+        $output = '';
 
-    	if ($session->authdata['authed'] !== true)
-			return $output;
+        if ($session->authdata['authed'] !== true)
+            return $output;
 
-#    	$indent = (null !== $indent)
+#        $indent = (null !== $indent)
 #                ? $this->getWhitespace($indent)
 #                : $this->getIndent();
-		$indent = '';
+        $indent = '';
 
         $output .= $indent . "<div id=\"userinfo\">\n";
-		$output .= $indent . "\tUser: " . $this->items['authed_username'] . "<br>\n";
-		$output .= $indent . "\tName: " . $this->items['authed_fname'] . ' ' . $this->items['authed_lname'] . "<br>\n";
-		$output .= $indent . "\tRole: " . $this->items['authed_role'] . "<br>\n";
-		if ($this->items['authed_by_crt'] === true)
-			$output .= $indent . "\tLoginmethod: CRT<br>\n";
-		else
-			$output .= $indent . "\tLoginmethod: PASSWD<br>\n";
-		$output .= $indent . "</div>\n";
+        $output .= $indent . "\tUser: " . $this->items['authed_username'] . "<br>\n";
+        $output .= $indent . "\tName: " . $this->items['authed_fname'] . ' ' . $this->items['authed_lname'] . "<br>\n";
+        $output .= $indent . "\tRole: " . $this->items['authed_role'] . "<br>\n";
+        if ($this->items['authed_by_crt'] === true)
+            $output .= $indent . "\tLoginmethod: CRT<br>\n";
+        else
+            $output .= $indent . "\tLoginmethod: PASSWD<br>\n";
+        $output .= $indent . "</div>\n";
 
         return $output;
     }

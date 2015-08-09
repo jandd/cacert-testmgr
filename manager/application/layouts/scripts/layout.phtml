@@ -10,23 +10,23 @@ print $this->doctype(); ?>
   <?php print $this->headScript()->appendFile('/js/positionUserInfo.js'); // ->appendFile('/js/center.js'); ?>
 </head>
 <body>
-	<div id="center">
-		<div id="header">
-		    <div id="header-logo">
-		        <img src="/img/cacert4.png" border="0" alt="CACert Logo" width="100px" height="30px">
-		    </div>
-		    <div id="header-navigation">
-		    	<?php print $this->topNav(); ?>
-		    </div>
-		</div>
+    <div id="center">
+        <div id="header">
+            <div id="header-logo">
+                <img src="/img/cacert4.png" border="0" alt="CACert Logo" width="100px" height="30px">
+            </div>
+            <div id="header-navigation">
+                <?php print $this->topNav(); ?>
+            </div>
+        </div>
 
-		<div id="left-navigation">
-			<?php print $this->leftNav(); ?>
-		</div>
-		<div id="content">
-			<?php print $this->layout()->content; ?>
-		</div>
-	</div>
-	<? print $this->userInfo(); ?>
+        <div id="left-navigation">
+            <?php print $this->leftNav(); ?>
+        </div>
+        <div id="content">
+            <?php print $this->layout()->content; ?>
+        </div>
+    </div>
+    <? print $this->userInfo(); ?>
 </body>
 </html>

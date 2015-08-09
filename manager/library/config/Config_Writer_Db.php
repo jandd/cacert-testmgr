@@ -86,14 +86,14 @@ class Config_Writer_Db extends Zend_Config_Writer
      * @return void
      */
     public function write($db = null, $config = null, $set = null) {
-    	$this->_set = $set;
+        $this->_set = $set;
 
-    	// this method is specialized for writing back Config objects (which hold config_db objects)
+        // this method is specialized for writing back Config objects (which hold config_db objects)
         if ($config !== null) {
-        	if ($config instanceof Config)
-            	$this->setConfig($config->getConfig());
+            if ($config instanceof Config)
+                $this->setConfig($config->getConfig());
             else {
-            	$this->setConfig($config);
+                $this->setConfig($config);
             }
         }
 
@@ -111,66 +111,66 @@ class Config_Writer_Db extends Zend_Config_Writer
 
         $string = 'delete from ' . $this->_tableName;
         if ($this->_set !== null) {
-			$string .= ' where ' . $this->_set;
+            $string .= ' where ' . $this->_set;
         }
 
-		$sql[] = $string;
+        $sql[] = $string;
 
         $iniString   = '';
         $extends     = $this->_config->getExtends();
         $sectionName = $this->_config->getSectionName();
 
         foreach ($this->_config as $key => $data) {
-     		$sql= array_merge($sql, $this->addEntry($sectionName, $key, $data));
-	    }
+             $sql= array_merge($sql, $this->addEntry($sectionName, $key, $data));
+        }
 
-	    try {
-	    	$db->beginTransaction();
-    		foreach ($sql as $command) {
-    			#Log::Log()->debug($command);
-	    		$db->query($command);
-			}
-			$db->commit();
-	    } catch (Exception $e) {
-			$db->rollBack();
-			Log::Log()->err($e);
-			throw $e;
-	    }
-	}
+        try {
+            $db->beginTransaction();
+            foreach ($sql as $command) {
+                #Log::Log()->debug($command);
+                $db->query($command);
+            }
+            $db->commit();
+        } catch (Exception $e) {
+            $db->rollBack();
+            Log::Log()->err($e);
+            throw $e;
+        }
+    }
 
-	/**
-	 * build key value pairs, key is created by recursively adding section names, delimited by "."
-	 * @param string $prefix
-	 * @param string $key
-	 * @param mixed $data
-	 */
+    /**
+     * build key value pairs, key is created by recursively adding section names, delimited by "."
+     * @param string $prefix
+     * @param string $key
+     * @param mixed $data
+     */
     protected function addEntry($prefix, $key, $data) {
-    	$sql = array();
+        $sql = array();
 
-    	if ($data instanceof Zend_Config) {
-			if ($prefix != '')
-    			$prefix .= '.';
-    		$prefix .= $key;
-    		foreach ($data as $k => $v) {
-    			$sql = array_merge($sql, $this->addEntry($prefix, $k, $v));
-    		}
-    	}
-    	else {
-    		$string = 'insert into ' . $this->_tableName . ' set ';
-    		$pkey = $prefix;
-    		if ($pkey != '')
-    			$pkey .= '.';
-    		$pkey .= $key;
-    		$string .= 'config_key=' . $this->_prepareValue($pkey) . ', ';
-    		$string .= 'config_value=' . $this->_prepareValue($data);
-    		if ($this->_set !== null)
-    			$string .= ', ' . $this->_set;
+        if ($data instanceof Zend_Config) {
+            if ($prefix != '')
+                $prefix .= '.';
+            $prefix .= $key;
+            foreach ($data as $k => $v) {
+                $sql = array_merge($sql, $this->addEntry($prefix, $k, $v));
+            }
+        }
+        else {
+            $string = 'insert into ' . $this->_tableName . ' set ';
+            $pkey = $prefix;
+            if ($pkey != '')
+                $pkey .= '.';
+            $pkey .= $key;
+            $string .= 'config_key=' . $this->_prepareValue($pkey) . ', ';
+            $string .= 'config_value=' . $this->_prepareValue($data);
+            if ($this->_set !== null)
+                $string .= ', ' . $this->_set;
 
-    		$sql[] = $string;
-    	}
+            $sql[] = $string;
+        }
 
-    	return $sql;
-	}
+        return $sql;
+    }
 
     /**
      * Add a branch to an INI string recursively
