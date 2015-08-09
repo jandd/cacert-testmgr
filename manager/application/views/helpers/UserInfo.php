@@ -82,7 +82,7 @@ class Zend_View_Helper_UserInfo extends Zend_View_Helper_Placeholder_Container_S
 
         $output .= $indent . "<div id=\"userinfo\">\n";
         $output .= $indent . "\tUser: " . $this->items['authed_username'] . "<br>\n";
-        $output .= $indent . "\tName: " . $this->items['authed_fname'] . ' ' . $this->items['authed_lname'] . "<br>\n";
+        $output .= $indent . "\tName: " . htmlentities(strip_tags($this->items['authed_fname'] . ' ' . $this->items['authed_lname']), ENT_QUOTES, 'ISO-8859-1') . "<br>\n";
         $output .= $indent . "\tRole: " . $this->items['authed_role'] . "<br>\n";
         if ($this->items['authed_by_crt'] === true)
             $output .= $indent . "\tLoginmethod: CRT<br>\n";

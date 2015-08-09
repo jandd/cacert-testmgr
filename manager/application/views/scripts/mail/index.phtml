@@ -23,14 +23,14 @@ else {
     </tr>
 <?php
     foreach ($this->headers as $header) {
-        print "        <tr>\n";
-        print "            <td><a href=\"" . $header->detailslink . "\">" . $header->fromaddress . "</a></td>";
-        print "            <td>" . $header->toaddress . "</td>";
-        print "            <td>" . $header->subject . "</td>";
-        print "            <td>" . $header->date . "</td>";
-        print "            <td>" . $header->Size . "</td>";
-        print "            <td><a class=\"delete\" href=\"" . $header->deletelink . "\"><img src=\"/img/delete_icon.jpg\"></a></td>";
-        print "        </tr>\n";
+        print "    <tr>\n";
+        print "        <td><a href=\"" . $header->detailslink . "\">" . $header->fromaddress . "</a></td>";
+        print "        <td>" . $header->toaddress . "</td>";
+        print "        <td>" . htmlspecialchars(quoted_printable_decode($header->subject), ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') . "</td>";
+        print "        <td>" . $header->date . "</td>";
+        print "        <td>" . $header->Size . "</td>";
+        print "        <td><a class=\"delete\" href=\"" . $header->deletelink . "\"><img src=\"/img/delete_icon.jpg\"></a></td>";
+        print "    </tr>\n";
     }
 }
 ?>
