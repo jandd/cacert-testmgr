@@ -17,7 +17,7 @@ class LogoutController extends Zend_Controller_Action
     public function indexAction() {
         $session = Zend_Registry::get('session');
 
-        Log::Log()->info(__METHOD__ . ' user logged out ' . $this->view->session->authdata['authed_username']);
+        Log::Log()->info(__METHOD__ . ' user logged out ' . $session->authdata['authed_username']);
 
         unset($session->authdata);
         $session->authdata['authed'] = false;
