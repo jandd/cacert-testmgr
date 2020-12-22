@@ -27,7 +27,7 @@ else {
         print "        <td><a href=\"" . $header->detailslink . "\">" . $header->fromaddress . "</a></td>";
         print "        <td>" . $header->toaddress . "</td>";
         print "        <td>" . htmlspecialchars(iconv_mime_decode($header->subject, ICONV_MIME_DECODE_CONTINUE_ON_ERROR, 'UTF-8'), ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') . "</td>";
-        print "        <td>" . $header->date . "</td>";
+        print "        <td>" . $header->MailDate . "</td>";
         print "        <td>" . $header->Size . "</td>";
         print "        <td><a class=\"delete\" href=\"" . $header->deletelink . "\"><img src=\"/img/delete_icon.jpg\"></a></td>";
         print "    </tr>\n";
