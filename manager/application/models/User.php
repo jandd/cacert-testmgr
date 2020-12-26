@@ -501,7 +501,6 @@ class Default_Model_User {
             'ttpadmin',
             'adadmin',
             'board',
-            'tverify',
             'locadmin',
             'locked',
             'assurer',

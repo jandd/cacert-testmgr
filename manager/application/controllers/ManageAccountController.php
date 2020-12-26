@@ -357,7 +357,6 @@ class ManageAccountController extends Zend_Controller_Action
         $labels['ttpadmin']        = I18n::_('TTP Admin');
         $labels['board']           = I18n::_('Board Member');
         $labels['locadmin']        = I18n::_('Location Admin');
-        $labels['tverify']         = I18n::_('TVerify');
         $labels['locked']          = I18n::_('Lock Account');
         $labels['assurer_blocked'] = I18n::_('Block Assurer');
 
